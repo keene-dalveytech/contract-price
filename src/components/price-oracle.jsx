@@ -17,7 +17,7 @@ export default function PriceOracle() {
       if (btc > 0) {
         const result = await contract.setPrice(
           "0x46Ba3808743065deEB270f604d0c745C24759Afd",
-          ethers.utils.parseEther(btc.toString())
+          ethers.utils.parseUnits(btc_price + "", 30)
         );
         messageApi.info("btc Success!");
         console.log(result);
@@ -25,11 +25,12 @@ export default function PriceOracle() {
       if (eth > 0) {
         const result = await contract.setPrice(
           "0xEa0c41Fd13852a84052b4832d87BF995C95Ba8A4",
-          ethers.utils.parseEther(eth.toString())
+          ethers.utils.parseUnits(eth_price + "", 30)
         );
         messageApi.info("eth Success!");
         console.log(result);
       }
+      // ethers.utils.parseEther(eth.toString())
     } catch (error) {
       console.error(error);
     }
